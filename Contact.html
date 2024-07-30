@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="Style/Contact.css">
+    <title>Contact</title>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="content">
+      <div class="logo">
+        <a href="index.html">Imad's <span style="color: rgb(255, 71, 71);">Word</span></a>
+      </div>
+      <ul class="menu-list">
+        <div class="icon cancel-btn">
+          <i class="fas fa-times"></i>
+        </div>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+      <div class="icon menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+  <div class="banner">
+    <section id="profile">
+        <div class="section__text">
+         <div class="contact-form">
+          <p><strong>Prêt à relever de nouveaux défis. Contactez-moi :)</strong> </p>
+          <form action="https://formspree.io/f/mpzvaaoq" method="POST">      
+            <input name="name" type="text" class="feedback-input" placeholder="Name" />   
+            <input name="email" type="text" class="feedback-input" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required />
+            <input name="objet" type="text" class="feedback-input" placeholder="Objet" />
+            <textarea name="message" class="feedback-input" placeholder="Comment"></textarea>
+            <input type="checkbox" name="accept" required>
+            <label for="accept" style="color: aliceblue;">I accept the terms and conditions</label>
+            <input type="submit" value="Send"/>
+          </form>  
+         </div>        
+        </div>
+    </section>
+  </div>
+
+  <script src="contact.js"></script>
+
+  <script>
+    const body = document.querySelector("body");
+    const navbar = document.querySelector(".navbar");
+    const menuBtn = document.querySelector(".menu-btn");
+    const cancelBtn = document.querySelector(".cancel-btn");
+    menuBtn.onclick = ()=>{
+      navbar.classList.add("show");
+      menuBtn.classList.add("hide");
+      body.classList.add("disabled");
+    }
+    cancelBtn.onclick = ()=>{
+      body.classList.remove("disabled");
+      navbar.classList.remove("show");
+      menuBtn.classList.remove("hide");
+    }
+    window.onscroll = ()=>{
+      this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+    }
+
+function validateForm() {
+    var emailInput = document.querySelector('input[name="email"]');
+    if (!emailInput.checkValidity()) {
+        // Display a custom error message
+        emailInput.setCustomValidity("Please enter a valid email address.");
+        return false;
+    }
+    return true;
+}
+  </script>
+</body>
+</html>
